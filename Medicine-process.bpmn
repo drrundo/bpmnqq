@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn2:definitions xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://genmymodel.com/bpmn2" id="_8GEIIBxcEeig8qiayYYCew" name="model" targetNamespace="http://genmymodel.com/bpmn2" exporter="Camunda Modeler" exporterVersion="1.11.3">
+  <bpmn2:extensionElements />
+  <bpmn2:process id="_8GEIIRxcEeig8qiayYYCew" name="Process" processType="None" isExecutable="false">
+    <bpmn2:startEvent id="_8GEIIhxcEeig8qiayYYCew" name="Illness occurs">
+      <bpmn2:outgoing>_8GEIIxxcEeig8qiayYYCew</bpmn2:outgoing>
+    </bpmn2:startEvent>
+    <bpmn2:sendTask id="_8GEIJBxcEeig8qiayYYCew" name="Send doctor request" implementation="##WebService">
+      <bpmn2:incoming>_8GEIIxxcEeig8qiayYYCew</bpmn2:incoming>
+      <bpmn2:outgoing>_8GEIJRxcEeig8qiayYYCew</bpmn2:outgoing>
+    </bpmn2:sendTask>
+    <bpmn2:sequenceFlow id="_8GEIIxxcEeig8qiayYYCew" name="" sourceRef="_8GEIIhxcEeig8qiayYYCew" targetRef="_8GEIJBxcEeig8qiayYYCew" />
+    <bpmn2:sequenceFlow id="_8GEIJRxcEeig8qiayYYCew" name="" sourceRef="_8GEIJBxcEeig8qiayYYCew" targetRef="_8GEIJhxcEeig8qiayYYCew" />
+    <bpmn2:receiveTask id="_8GEIJhxcEeig8qiayYYCew" name="Receive appointment" implementation="##WebService">
+      <bpmn2:incoming>_8GEIJRxcEeig8qiayYYCew</bpmn2:incoming>
+      <bpmn2:outgoing>_8GEIJxxcEeig8qiayYYCew</bpmn2:outgoing>
+    </bpmn2:receiveTask>
+    <bpmn2:sequenceFlow id="_8GEIJxxcEeig8qiayYYCew" name="" sourceRef="_8GEIJhxcEeig8qiayYYCew" targetRef="_8GEIKBxcEeig8qiayYYCew" />
+    <bpmn2:sequenceFlow id="_8GEIKRxcEeig8qiayYYCew" name="" sourceRef="_8GEIKBxcEeig8qiayYYCew" targetRef="_8GEIKhxcEeig8qiayYYCew" />
+    <bpmn2:endEvent id="_8GEIKxxcEeig8qiayYYCew" name="">
+      <bpmn2:incoming>_8GEILBxcEeig8qiayYYCew</bpmn2:incoming>
+    </bpmn2:endEvent>
+    <bpmn2:sequenceFlow id="_8GEILBxcEeig8qiayYYCew" name="" sourceRef="_8GEIKhxcEeig8qiayYYCew" targetRef="_8GEIKxxcEeig8qiayYYCew" />
+    <bpmn2:sendTask id="_8GEIKBxcEeig8qiayYYCew" name="Send medicine request" implementation="##WebService">
+      <bpmn2:incoming>_8GEIJxxcEeig8qiayYYCew</bpmn2:incoming>
+      <bpmn2:outgoing>_8GEIKRxcEeig8qiayYYCew</bpmn2:outgoing>
+    </bpmn2:sendTask>
+    <bpmn2:receiveTask id="_8GEIKhxcEeig8qiayYYCew" name="Receive medicine" implementation="##WebService">
+      <bpmn2:incoming>_8GEIKRxcEeig8qiayYYCew</bpmn2:incoming>
+      <bpmn2:outgoing>_8GEILBxcEeig8qiayYYCew</bpmn2:outgoing>
+    </bpmn2:receiveTask>
+  </bpmn2:process
+  <bpmn2:collaboration id="_8GEILRxcEeig8qiayYYCew" name="Collaboration">
+    <bpmn2:participant id="_8GEILhxcEeig8qiayYYCew" name="Patient" processRef="_8GEIIRxcEeig8qiayYYCew" />
+    <bpmn2:participant id="_8GEILxxcEeig8qiayYYCew" name="Receptionist" processRef="_8GEIMBxcEeig8qiayYYCew" />
+    <bpmn2:messageFlow id="_8GEIMRxcEeig8qiayYYCew" name="I want to see doctor" sourceRef="_8GEIJBxcEeig8qiayYYCew" targetRef="_8GEIMhxcEeig8qiayYYCew" />
+    <bpmn2:messageFlow id="_8GEIMxxcEeig8qiayYYCew" name="Go see doctor" sourceRef="_8GEINBxcEeig8qiayYYCew" targetRef="_8GEIJhxcEeig8qiayYYCew" />
+    <bpmn2:messageFlow id="_8GEINRxcEeig8qiayYYCew" name="I need my medicine" sourceRef="_8GEIKBxcEeig8qiayYYCew" targetRef="_8GEINhxcEeig8qiayYYCew" />
+    <bpmn2:messageFlow id="_8GEINxxcEeig8qiayYYCew" name="Here is your medicine" sourceRef="_8GEIOBxcEeig8qiayYYCew" targetRef="_8GEIKhxcEeig8qiayYYCew" />
+    <bpmn2:group id="_8GEIORxcEeig8qiayYYCew" categoryValueRef="_8GEIOhxcEeig8qiayYYCew" />
+  </bpmn2:collaboration>
+  <bpmn2:process id="_8GEIMBxcEeig8qiayYYCew" name="process" processType="None" isExecutable="false">
+    <bpmn2:startEvent id="_8GEIOxxcEeig8qiayYYCew" name="">
+      <bpmn2:outgoing>_8GEIPBxcEeig8qiayYYCew</bpmn2:outgoing>
+    </bpmn2:startEvent>
+    <bpmn2:receiveTask id="_8GEIMhxcEeig8qiayYYCew" name="Receive doctor request" implementation="##WebService">
+      <bpmn2:incoming>_8GEIPBxcEeig8qiayYYCew</bpmn2:incoming>
+      <bpmn2:outgoing>_8GEIPRxcEeig8qiayYYCew</bpmn2:outgoing>
+    </bpmn2:receiveTask>
+    <bpmn2:sequenceFlow id="_8GEIPRxcEeig8qiayYYCew" name="" sourceRef="_8GEIMhxcEeig8qiayYYCew" targetRef="_8GEINBxcEeig8qiayYYCew" />
+    <bpmn2:sendTask id="_8GEINBxcEeig8qiayYYCew" name="Send appointment" implementation="##WebService">
+      <bpmn2:incoming>_8GEIPRxcEeig8qiayYYCew</bpmn2:incoming>
+      <bpmn2:outgoing>_8GEIPhxcEeig8qiayYYCew</bpmn2:outgoing>
+    </bpmn2:sendTask>
+    <bpmn2:endEvent id="_8GEIPxxcEeig8qiayYYCew" name="">
+      <bpmn2:incoming>_8GEIQBxcEeig8qiayYYCew</bpmn2:incoming>
+    </bpmn2:endEvent>
+    <bpmn2:sequenceFlow id="_8GEIPhxcEeig8qiayYYCew" name="" sourceRef="_8GEINBxcEeig8qiayYYCew" targetRef="_8GEINhxcEeig8qiayYYCew" />
+    <bpmn2:sequenceFlow id="_8GEIQRxcEeig8qiayYYCew" name="" sourceRef="_8GEINhxcEeig8qiayYYCew" targetRef="_8GEIOBxcEeig8qiayYYCew" />
+    <bpmn2:sequenceFlow id="_8GEIQBxcEeig8qiayYYCew" name="" sourceRef="_8GEIOBxcEeig8qiayYYCew" targetRef="_8GEIPxxcEeig8qiayYYCew" />
+    <bpmn2:sequenceFlow id="_8GEIPBxcEeig8qiayYYCew" name="" sourceRef="_8GEIOxxcEeig8qiayYYCew" targetRef="_8GEIMhxcEeig8qiayYYCew" />
+    <bpmn2:sendTask id="_8GEIOBxcEeig8qiayYYCew" name="Send medicine" implementation="##WebService">
+      <bpmn2:incoming>_8GEIQRxcEeig8qiayYYCew</bpmn2:incoming>
+      <bpmn2:outgoing>_8GEIQBxcEeig8qiayYYCew</bpmn2:outgoing>
+    </bpmn2:sendTask>
+    <bpmn2:receiveTask id="_8GEINhxcEeig8qiayYYCew" name="Receive doctor request" implementation="##WebService">
+      <bpmn2:incoming>_8GEIPhxcEeig8qiayYYCew</bpmn2:incoming>
+      <bpmn2:outgoing>_8GEIQRxcEeig8qiayYYCew</bpmn2:outgoing>
+    </bpmn2:receiveTask>
+  </bpmn2:process>
+  <bpmn2:category id="_8GEIQhxcEeig8qiayYYCew">
+    <bpmn2:categoryValue id="_8GEIOhxcEeig8qiayYYCew" value="Handle medicine" />
+  </bpmn2:category>
+  <bpmndi:BPMNDiagram id="_8GEIQxxcEeig8qiayYYCew" name="CollaborationDiagram">
+    <bpmndi:BPMNPlane id="_8GEIRBxcEeig8qiayYYCew" bpmnElement="_8GEILRxcEeig8qiayYYCew">
+      <bpmndi:BPMNShape id="_8GEIRRxcEeig8qiayYYCew" bpmnElement="_8GEIIhxcEeig8qiayYYCew">
+        <dc:Bounds x="110" y="130" width="35" height="35" />
+        <bpmndi:BPMNLabel id="_8GEIRhxcEeig8qiayYYCew">
+          <dc:Bounds x="84" y="169" width="88" height="5" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_8GEIRxxcEeig8qiayYYCew" bpmnElement="_8GEIORxcEeig8qiayYYCew">
+        <dc:Bounds x="625" y="21" width="360" height="380" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_8GEISBxcEeig8qiayYYCew" bpmnElement="_8GEINhxcEeig8qiayYYCew">
+        <dc:Bounds x="600" y="320" width="90" height="60" />
+        <bpmndi:BPMNLabel id="_8GEISRxcEeig8qiayYYCew" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_8GEIShxcEeig8qiayYYCew" bpmnElement="_8GEIPxxcEeig8qiayYYCew">
+        <dc:Bounds x="920" y="330" width="35" height="35" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_8GEISxxcEeig8qiayYYCew" bpmnElement="_8GEILxxcEeig8qiayYYCew">
+        <dc:Bounds x="40" y="280" width="963" height="142" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_8GEITBxcEeig8qiayYYCew" bpmnElement="_8GEIOxxcEeig8qiayYYCew">
+        <dc:Bounds x="100" y="330" width="35" height="35" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_8GEITRxcEeig8qiayYYCew" bpmnElement="_8GEIMhxcEeig8qiayYYCew">
+        <dc:Bounds x="210" y="320" width="90" height="60" />
+        <bpmndi:BPMNLabel id="_8GEIThxcEeig8qiayYYCew" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_8GEITxxcEeig8qiayYYCew" bpmnElement="_8GEINBxcEeig8qiayYYCew">
+        <dc:Bounds x="390" y="320" width="80" height="60" />
+        <bpmndi:BPMNLabel id="_8GEIUBxcEeig8qiayYYCew" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_8GEIURxcEeig8qiayYYCew" bpmnElement="_8GEIJBxcEeig8qiayYYCew">
+        <dc:Bounds x="210" y="120" width="90" height="60" />
+        <bpmndi:BPMNLabel id="_8GEIUhxcEeig8qiayYYCew" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_8GEIUxxcEeig8qiayYYCew" bpmnElement="_8GEILhxcEeig8qiayYYCew">
+        <dc:Bounds x="40" y="80" width="963" height="142" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_8GEIVBxcEeig8qiayYYCew" bpmnElement="_8GEIKhxcEeig8qiayYYCew">
+        <dc:Bounds x="750" y="120" width="100" height="60" />
+        <bpmndi:BPMNLabel id="_8GEIVRxcEeig8qiayYYCew" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_8GEIVhxcEeig8qiayYYCew" bpmnElement="_8GEIOBxcEeig8qiayYYCew">
+        <dc:Bounds x="760" y="320" width="90" height="60" />
+        <bpmndi:BPMNLabel id="_8GEIVxxcEeig8qiayYYCew" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_8GEIWBxcEeig8qiayYYCew" bpmnElement="_8GEIKxxcEeig8qiayYYCew">
+        <dc:Bounds x="920" y="130" width="35" height="35" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_8GEIWRxcEeig8qiayYYCew" bpmnElement="_8GEIJhxcEeig8qiayYYCew">
+        <dc:Bounds x="380" y="120" width="90" height="60" />
+        <bpmndi:BPMNLabel id="_8GEIWhxcEeig8qiayYYCew" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_8GEIWxxcEeig8qiayYYCew" bpmnElement="_8GEIKBxcEeig8qiayYYCew">
+        <dc:Bounds x="600" y="120" width="90" height="60" />
+        <bpmndi:BPMNLabel id="_8GEIXBxcEeig8qiayYYCew" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="_8GEIXRxcEeig8qiayYYCew" bpmnElement="_8GEIJxxcEeig8qiayYYCew">
+        <di:waypoint xsi:type="dc:Point" x="470" y="150" />
+        <di:waypoint xsi:type="dc:Point" x="600" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="_8GEIXhxcEeig8qiayYYCew" bpmnElement="_8GEILBxcEeig8qiayYYCew">
+        <di:waypoint xsi:type="dc:Point" x="850" y="147" />
+        <di:waypoint xsi:type="dc:Point" x="920" y="147" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="_8GEvMBxcEeig8qiayYYCew" bpmnElement="_8GEIQRxcEeig8qiayYYCew">
+        <di:waypoint xsi:type="dc:Point" x="690" y="350" />
+        <di:waypoint xsi:type="dc:Point" x="760" y="350" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="_8GEvMRxcEeig8qiayYYCew" bpmnElement="_8GEIKRxcEeig8qiayYYCew">
+        <di:waypoint xsi:type="dc:Point" x="690" y="150" />
+        <di:waypoint xsi:type="dc:Point" x="750" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="_8GEvMhxcEeig8qiayYYCew" bpmnElement="_8GEINxxcEeig8qiayYYCew">
+        <di:waypoint xsi:type="dc:Point" x="805" y="320" />
+        <di:waypoint xsi:type="dc:Point" x="805" y="180" />
+        <bpmndi:BPMNLabel id="_8GEvMxxcEeig8qiayYYCew">
+          <dc:Bounds x="695" y="242" width="92" height="15" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="_8GEvNBxcEeig8qiayYYCew" bpmnElement="_8GEINRxcEeig8qiayYYCew">
+        <di:waypoint xsi:type="dc:Point" x="645" y="180" />
+        <di:waypoint xsi:type="dc:Point" x="645" y="320" />
+        <bpmndi:BPMNLabel id="_8GEvNRxcEeig8qiayYYCew">
+          <dc:Bounds x="545" y="242" width="79" height="15" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="_8GEvNhxcEeig8qiayYYCew" bpmnElement="_8GEIJRxcEeig8qiayYYCew">
+        <di:waypoint xsi:type="dc:Point" x="300" y="150" />
+        <di:waypoint xsi:type="dc:Point" x="380" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="_8GEvNxxcEeig8qiayYYCew" bpmnElement="_8GEIMxxcEeig8qiayYYCew">
+        <di:waypoint xsi:type="dc:Point" x="430" y="320" />
+        <di:waypoint xsi:type="dc:Point" x="430" y="180" />
+        <bpmndi:BPMNLabel id="_8GEvOBxcEeig8qiayYYCew">
+          <dc:Bounds x="355" y="242" width="57" height="15" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="_8GEvORxcEeig8qiayYYCew" bpmnElement="_8GEIQBxcEeig8qiayYYCew">
+        <di:waypoint xsi:type="dc:Point" x="850" y="347" />
+        <di:waypoint xsi:type="dc:Point" x="920" y="347" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="_8GEvOhxcEeig8qiayYYCew" bpmnElement="_8GEIPhxcEeig8qiayYYCew">
+        <di:waypoint xsi:type="dc:Point" x="470" y="350" />
+        <di:waypoint xsi:type="dc:Point" x="600" y="350" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="_8GEvOxxcEeig8qiayYYCew" bpmnElement="_8GEIIxxcEeig8qiayYYCew">
+        <di:waypoint xsi:type="dc:Point" x="145" y="147" />
+        <di:waypoint xsi:type="dc:Point" x="210" y="147" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="_8GEvPBxcEeig8qiayYYCew" bpmnElement="_8GEIPBxcEeig8qiayYYCew">
+        <di:waypoint xsi:type="dc:Point" x="135" y="347" />
+        <di:waypoint xsi:type="dc:Point" x="210" y="347" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="_8GEvPRxcEeig8qiayYYCew" bpmnElement="_8GEIMRxcEeig8qiayYYCew">
+        <di:waypoint xsi:type="dc:Point" x="255" y="180" />
+        <di:waypoint xsi:type="dc:Point" x="255" y="320" />
+        <bpmndi:BPMNLabel id="_8GEvPhxcEeig8qiayYYCew">
+          <dc:Bounds x="155" y="242" width="85" height="15" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="_8GEvPxxcEeig8qiayYYCew" bpmnElement="_8GEIPRxcEeig8qiayYYCew">
+        <di:waypoint xsi:type="dc:Point" x="300" y="350" />
+        <di:waypoint xsi:type="dc:Point" x="390" y="350" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn2:definitions>
